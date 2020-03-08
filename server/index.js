@@ -7,6 +7,8 @@ server.use(express.json())
 server.use('/forms', require('./controllers/form'))
 server.use('/formImpls', require('./controllers/formImpl'))
 
+server.use(express.static("public"))
+
 const cors = require('cors')
 server.use(cors())
 

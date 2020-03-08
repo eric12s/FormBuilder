@@ -9,7 +9,7 @@ const SubmitPage = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(values)
+        console.log(event.target.value)
         
         const formImpl = {
             id: 5,
@@ -17,15 +17,15 @@ const SubmitPage = (props) => {
             phone: "sdfdf"
         }
 
-        Comms.createImpl(formImpl)
-        .then((formImpl) => {
-            console.log(formImpl)
-        }).catch(error => console.log(error))   
+        // Comms.createImpl(formImpl)
+        // .then((formImpl) => {
+        //     console.log(formImpl)
+        // }).catch(error => console.log(error))   
     }
 
     const handleValueChange = (event) => {
-        values[count] = event.target.value
-        setCount(count + 1)
+        values[count]=event.target.value
+        setCount(count+1)
     }
     //adding key
     return( 
@@ -33,10 +33,7 @@ const SubmitPage = (props) => {
             <h1>{props.formName}</h1>
                 {Object.keys(props.fields).map((item, i) => {
                     return (
-                        <div key={i}>
-                            {props.fields[i].name}:<input type={props.fields[i].inputType} value={values[i]} onChange={handleValueChange}/>
-                            <br></br>
-                        </div>
+                            <input type={props.fields[i].inputType} value={values[i]}/>
                     )
                 })}
                 <button type="submit">Save</button>

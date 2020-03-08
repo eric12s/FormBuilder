@@ -24,11 +24,11 @@ const CreateTable = (props) => {
             <table>
                 <thead>
                     <tr>
-                        <th>Form Id</th>
-                        <th>Form Name</th>
-                        <th># Submissions</th>
-                        <th>Submit Page</th>
-                        <th>Submissions Page</th>
+                        <th>Form Id </th>
+                        <th>Form Name </th>
+                        <th># Submissions </th>
+                        <th>Submit Page </th>
+                        <th>Submissions Page </th>
                     </tr>
                 </thead>
                 {getTableRows()}

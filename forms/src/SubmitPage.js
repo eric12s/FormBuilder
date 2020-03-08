@@ -31,9 +31,11 @@ const SubmitPage = (props) => {
     return( 
         <form onSubmit={handleSubmit}>
             <h1>{props.formName}</h1>
-                {Object.keys(props.fields).map((item, i) => {
+                {Object.keys(props.fields).map((i) => {
                     return (
-                            <input key={i} type={props.fields[i].inputType} value={values[i]} onChange={handleValueChange}/>
+                        <div key={i}>
+                            {props.fields[i].name}<input type={props.fields[i].inputType} value={values[i]} onChange={handleValueChange}/>
+                        </div>
                     )
                 })}
                 <button type="submit">Save</button>

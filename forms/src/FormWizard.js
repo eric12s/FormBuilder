@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {
   withRouter
 } from 'react-router-dom'
-
+import 'bootstrap/dist/css/bootstrap.css'
 import Comms from './services/server_communication.js'
 
 const FormWizard = (props) => {
@@ -68,9 +68,9 @@ const FormWizard = (props) => {
   return (
     <div>
       <h1>Add new field</h1>
-      <form onSubmit={addField}>
-        <div>
-                    field label:<input type="text" value={newLabel} onChange={handleLabelChange}></input>
+      <form onSubmit={addField} className="container">
+        <div class="form-group">
+                    field label:<input  type="text" value={newLabel} onChange={handleLabelChange}></input>
                     input name:<input type="text" value={newName} onChange={handleNameChange}></input>
                     input type:<select value={newInputType} onChange={handleInputTypeChange}>
             <option value="text">text</option>
@@ -81,18 +81,18 @@ const FormWizard = (props) => {
             <option value="number">number</option>
           </select>
           <br></br>
-          <button type="submit">Add Field</button>
+          <button type="submit" className="btn btn-primary">>Add Field</button>
         </div>
       </form>
-      <ul>
-        {fields.map((item, i) => <li key={i}>{item.label} {item.name} {item.inputType}</li>)}
+      <ul className="list-group">
+        {fields.map((item, i) => <li key={i} class="list-group-item">{item.label} {item.name} {item.inputType}</li>)}
       </ul>
-
+      <br></br>
       <form onSubmit={addForm}>
-        <div>
+        <div class="form-group">
                     Form Name:<input value={newFormName} onChange={handleFormNameChange}></input>
           <br></br>
-          <button type="submit">Save</button>
+          <button type="submit" className="btn btn-success">Save</button>
         </div>
       </form>            </div>
   )

@@ -1,6 +1,7 @@
 //desiging the table
 import React from 'react'
 import { Link } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.css'
 
 const CreateTable = (props) => {
     const getTableRows = () => {
@@ -20,15 +21,15 @@ const CreateTable = (props) => {
     }
     
     return (
-        <div>
+        <div className="table table-striped">
             <table>
-                <thead>
+                <thead className="thead-dark">
                     <tr>
-                        <th>Form Id </th>
-                        <th>Form Name </th>
-                        <th># Submissions </th>
-                        <th>Submit Page </th>
-                        <th>Submissions Page </th>
+                        <th scope="col">Form Id </th>
+                        <th scope="col">Form Name </th>
+                        <th scope="col"># Submissions </th>
+                        <th scope="col">Submit Page </th>
+                        <th scope="col">Submissions Page </th>
                     </tr>
                 </thead>
                 {getTableRows()}

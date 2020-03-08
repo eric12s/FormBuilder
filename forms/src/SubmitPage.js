@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Comms from './services/server_communication.js'
+import 'bootstrap/dist/css/bootstrap.css'
 
 const SubmitPage = (props) => {
     const [values, setValues] = useState([''])
@@ -29,7 +30,7 @@ const SubmitPage = (props) => {
     }
     //adding key
     return( 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="container">
             <h1>{props.formName}</h1>
                 {Object.keys(props.fields).map((i) => {
                     return (
@@ -38,7 +39,7 @@ const SubmitPage = (props) => {
                         </div>
                     )
                 })}
-                <button type="submit">Save</button>
+                <button type="submit" className="btn btn-primary">Save</button>
           </form>
     )
 

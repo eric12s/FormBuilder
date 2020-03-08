@@ -5,7 +5,7 @@ import {
   Route, Link
 } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-
+import 'bootstrap/dist/css/bootstrap.css'
 import CreateTable from './CreateTable.js'
 import Comms from './services/server_communication.js'
 import SubmitPage from './SubmitPage'
@@ -115,9 +115,9 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className="container-lg">
       <Router history={history}>
-        <div>
+        <div className="col">
           <Link style={padding} to="/table">Form List</Link>|
           <Link style={padding} to="/wizard">Form Builder</Link>
           <Route path="/table" render={() => <CreateTable forms={forms}/>}/>
@@ -128,7 +128,6 @@ const App = () => {
       </Router>
 
     </div>
-
   )
 }
 

@@ -19,8 +19,9 @@ const FormWizard = (props) => {
   // }, [props.forms])
 
   const addField = (event) => {
+    event.preventDefault() // Why? Ask Or
     // if(fieldSet.has(newLabel))
-    //     return alert(`${newLabel} is already in exist`)
+    //    return alert(`${newLabel} is already in exist`) ASK OR
 
     const field = { name: newName, label: newLabel, inputType: newInputType || 'text' }
     console.log(newLabel)

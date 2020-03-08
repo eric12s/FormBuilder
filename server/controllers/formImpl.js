@@ -8,7 +8,8 @@ router.use(cors())
 router.post('/', async (req, res) => {
   const body = req.body
   console.log(body)
-
+  const originId = body.originId
+  await Form.findOne({_id:originId}).filledForms.concat(body.id)
   try{
     const formImpl = await FormImpl.create(body)
     res.status(201).json(formImpl.toJSON())
@@ -35,10 +36,12 @@ router.post('/', async (req, res) => {
 
 router.get('/:_id', async (req, res) => {
     try{
-      const id = Number(req.params._id)
-      const form = await Form.find(form => form._id === id)
-      const formImpls = form.filledForms
-      res.status(200).json(formImpls)
+      //const id = Number(req.params._id)
+      const form = await Form.find(form._id === req.body._id)
+      const formImplsID = form.filledForms
+      const formImpls = await FormImpl.find({id: formImplsID})
+      console.log(form)
+      res.status(200).json(id)
     }catch(error){
       res.status(404).json({
         error: 'Cant find submissions'

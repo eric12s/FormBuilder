@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import {
   BrowserRouter as Router,
-  Route, Link, Redirect, withRouter, useHistory
+  Route, Link
 } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 
@@ -13,13 +13,7 @@ import FormWizard from './FormWizard'
 
 const App = () => {
   const [forms, setForms] = useState([])
-  const [fields, setFields] = useState([])
-  const [fieldSet, setSet] = useState(new Set())
-  const [newLabel, setNewLabel] = useState('')
-  const [newName, setNewName] = useState('')
-  const [newInputType, setNewInputType] = useState('')
-  const [newFormName, setNewFormName] = useState('')
-  const [formId, setFormId] = useState(1)
+
 
   useEffect(() => {
     Comms.readAll()
@@ -129,7 +123,7 @@ const App = () => {
           <Route path="/table" render={() => <CreateTable forms={forms}/>}/>
           <Route path="/wizard" render={() => <FormWizard forms={forms} setForms={addFormArr}/>}/>
           <Route path="/submit/:id" render={({ match }) => <SubmitPage fields={forms[match.params.id].fields}
-            formName={forms[match.params.id].name}/>}/>
+                                              formName={forms[match.params.id].name}  id={forms[match.params.id]._id}/>}/>
         </div>
       </Router>
 

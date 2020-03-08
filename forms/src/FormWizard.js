@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom'
+import React, { useState } from 'react'
 import {
-  BrowserRouter as Router,
-  Route, Link, Redirect, withRouter, useHistory
+  withRouter
 } from 'react-router-dom'
-import { createBrowserHistory } from 'history'
 
-import CreateTable from './CreateTable.js'
 import Comms from './services/server_communication.js'
-import SubmitPage from './SubmitPage'
 
 const FormWizard = (props) => {
   const [fields, setFields] = useState([])
-  const [fieldSet, setSet] = useState(new Set())
+  //const [fieldSet, setSet] = useState(new Set())
   const [newLabel, setNewLabel] = useState('')
   const [newName, setNewName] = useState('')
   const [newInputType, setNewInputType] = useState('')
@@ -24,14 +19,13 @@ const FormWizard = (props) => {
   // }, [props.forms])
 
   const addField = (event) => {
-    event.preventDefault() // Why? Ask Or
     // if(fieldSet.has(newLabel))
-    //    return alert(`${newLabel} is already in exist`) ASK OR
+    //     return alert(`${newLabel} is already in exist`)
 
     const field = { name: newName, label: newLabel, inputType: newInputType || 'text' }
     console.log(newLabel)
     setFields(fields.concat(field))
-    setSet(field.label)
+    //setSet(field.label)
     setNewName('')
     setNewLabel('')
     setNewInputType('')

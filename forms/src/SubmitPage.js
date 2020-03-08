@@ -14,7 +14,8 @@ const SubmitPage = (props) => {
         const formImpl = {
             id: 5,
             name: "dfsdf",
-            phone: "sdfdf"
+            phone: "sdfdf",
+            originId: props.id
         }
 
         // Comms.createImpl(formImpl)
@@ -24,8 +25,7 @@ const SubmitPage = (props) => {
     }
 
     const handleValueChange = (event) => {
-        values[count]=event.target.value
-        setCount(count+1)
+        //setValues(values[count]=event.target.value)
     }
     //adding key
     return( 
@@ -33,7 +33,7 @@ const SubmitPage = (props) => {
             <h1>{props.formName}</h1>
                 {Object.keys(props.fields).map((item, i) => {
                     return (
-                            <input type={props.fields[i].inputType} value={values[i]}/>
+                            <input key={i} type={props.fields[i].inputType} value={values[i]} onChange={handleValueChange}/>
                     )
                 })}
                 <button type="submit">Save</button>

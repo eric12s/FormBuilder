@@ -1,4 +1,4 @@
-<h1>Form Builder Application<h1/>
+<h1>Form Builder Application
 
 My first web developmend project.
 As you will notice, I didnt finish with building the project, as the user can't submit to exiting forms, yet.
@@ -10,10 +10,10 @@ and I believe that I proofed that I have the right learning-skills.
 
 Stacks
   <ul>
-    <li>Frontend- React js<li/>
-    <li>Backend- Node js<li/>
-    <li>Database- MongoDB<li/>
-    <li>Hosting- Heruku<li/>
+    <li>Frontend- React js
+    <li>Backend- Node js
+    <li>Database- MongoDB
+    <li>Hosting- Heruku
   <ul/>
     
 instructions

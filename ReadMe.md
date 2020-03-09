@@ -14,11 +14,12 @@ and I believe that I proofed that I have the right learning-skills.
     <li>Backend- Node js<li/>
     <li>Database- MongoDB<li/>
     <li>Hosting- Heruku<li/>
-
+  <ul/>
+    
 <h2>instructions<h2/>
 First, you need to run "npm install" on the server dictionary, than run it with "npm start".
 Than, run "npm install" on the frontend(located in "forms" dic), and start it with "npm start".
 
 You can now choose to create new form in the Form Wizard, or watch the current existing forms in a table from the Table List page.
 
-Link to the site: https://form-builder-proj.herokuapp.com/
+Link to the app: https://form-builder-proj.herokuapp.com/

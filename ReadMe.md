@@ -8,7 +8,7 @@ I hope that you would appriciate my hard work, even if I didnt complete the whol
 and I believe that I proofed that I have the right learning-skills.
 
 
-<h2>Stacks<h2/>
+Stacks
   <ul>
     <li>Frontend- React js<li/>
     <li>Backend- Node js<li/>
@@ -16,7 +16,7 @@ and I believe that I proofed that I have the right learning-skills.
     <li>Hosting- Heruku<li/>
   <ul/>
     
-<h2>instructions<h2/>
+instructions
 First, you need to run "npm install" on the server dictionary, than run it with "npm start".
 Than, run "npm install" on the frontend(located in "forms" dic), and start it with "npm start".
 

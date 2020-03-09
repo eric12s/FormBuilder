@@ -1,4 +1,4 @@
-<h1>Form Builder Application
+Form Builder Application
 
 My first web developmend project.
 As you will notice, I didnt finish with building the project, as the user can't submit to exiting forms, yet.

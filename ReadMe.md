@@ -15,8 +15,12 @@ and I believe that I proofed that I have the right learning-skills.
 * Hosting- Heruku
     
 # instructions
-First, you need to run "npm install" on the server dictionary, then run it with "npm start".
-After, run "npm install" on the frontend(located in "forms" dic), and start it with "npm start".
+1. Clone this repo
+2. Download node js https://nodejs.org/en/download/
+3. You may change "baseUrl" variable inside "forms/src/services/server_communication.js" to http://localhost:3001/ if you intend
+to run it locally.
+4. Run in the "server" folder $"npm start"
+5. You can start using the application in http://localhost:3001/
 
 You can now choose to create new form in the Form Wizard, or watch the current existing forms in a table from the Table List page.
 

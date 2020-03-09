@@ -19,8 +19,9 @@ and I believe that I proofed that I have the right learning-skills.
 2. Download node js https://nodejs.org/en/download/
 3. You may change "baseUrl" variable inside "forms/src/services/server_communication.js" to http://localhost:3001/ if you intend
 to run it locally.
-4. Run in the "server" folder $"npm start"
-5. You can start using the application in http://localhost:3001/
+4. Run $"npm install" in the "server" folder.
+5. Run $"npm start" in the "server" folder. 
+6. You can start using the application in http://localhost:3001/
 
 You can now choose to create new form in the Form Wizard, or watch the current existing forms in a table from the Table List page.
 

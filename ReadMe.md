@@ -1,4 +1,4 @@
-Form Builder Application
+# Form Builder Application
 
 My first web developmend project.
 As you will notice, I didnt finish with building the project, as the user can't submit to exiting forms, yet.
@@ -8,18 +8,17 @@ I hope that you would appriciate my hard work, even if I didnt complete the whol
 and I believe that I proofed that I have the right learning-skills.
 
 
-Stacks
-  <ul>
-    <li>Frontend- React js
-    <li>Backend- Node js
-    <li>Database- MongoDB
-    <li>Hosting- Heruku
-  <ul/>
+# Stacks
+* Frontend- React js
+* Backend- Node js
+* Database- MongoDB
+* Hosting- Heruku
     
-instructions
+# instructions
 First, you need to run "npm install" on the server dictionary, than run it with "npm start".
 Than, run "npm install" on the frontend(located in "forms" dic), and start it with "npm start".
 
 You can now choose to create new form in the Form Wizard, or watch the current existing forms in a table from the Table List page.
 
-Link to the app: https://form-builder-proj.herokuapp.com/
+# Link
+https://form-builder-proj.herokuapp.com/

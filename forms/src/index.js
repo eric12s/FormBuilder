@@ -71,7 +71,8 @@ const App = () => {
           <Link style={padding} to="/wizard">Form Builder</Link>
 
           {/*The new lib I tried to use, too late, providing redirect to the server*/}
-        
+          {/* On the previous lib I used, which is now on command, You can see the user can input login for Github, it will redirect the
+          request back to the server*/}
             <SocialButton
               provider='github'
               appId='470b3166c3ce49ee90cd'

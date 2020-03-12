@@ -10,10 +10,34 @@ import CreateTable from './CreateTable.js'
 import Comms from './services/server_communication.js'
 import SubmitPage from './SubmitPage'
 import FormWizard from './FormWizard'
+import { useAuth0 } from "./react-auth0-spa"
+import { Auth0Provider } from "./react-auth0-spa";
+import config from "./auth_config.json";
+import history from "./utils/history";
+import ExternalApi from "./view/ExternalApi";
+import SocialLogin from 'react-social-login'
+import SocialButton from './SocialButton'
+
+
+
+const onRedirectCallback = appState => {
+  history.push(
+    appState && appState.targetUrl
+      ? appState.targetUrl
+      : window.location.pathname
+  );
+};
 
 const App = () => {
   const [forms, setForms] = useState([])
 
+  const onSuccess = (user) => {
+    console.log(user)
+  }
+   
+  const onFailure = (err) => {
+    console.error(err)
+  }
 
   useEffect(() => {
     Comms.readAll()
@@ -27,103 +51,41 @@ const App = () => {
 
   const history = createBrowserHistory()
 
-  // const FormWizard= (props) => {
-  //     const addField = (event) => {
-  //         event.preventDefault() //Why? Ask Or
-  //         //if(fieldSet.has(newLabel))
-  //         //    return alert(`${newLabel} is already in exist`) ASK OR
 
-  //         const field = { name: newName, label: newLabel, inputType: newInputType, }
-  //         console.log(newLabel)
-  //         setFields(fields.concat(field))
-  //         setSet(field.label)
-  //         setNewName('')
-  //         setNewLabel('')
-  //         setNewInputType('')
-  //     }
-
-  //     const addForm = (event) => {
-
-  //         event.preventDefault()
-  //         const form = {
-  //             name: newFormName,
-  //             fields: fields,
-  //             id: formId,
-  //             noSubmissions: 0,
-  //         }
-
-  //         Comms.create(form)
-  //             .then((form) => {
-  //                 console.log(form)
-  //                 setForms(forms.concat(form))
-  //             }).catch(error => console.log(error))
-  //         setForms(forms.concat(form))
-  //         setNewFormName('')
-  //         setFields([])
-  //         setFormId(formId + 1)
-  //         props.history.push("/table")
-  //     }
-
-  //     const handleNameChange = (event) => {
-  //         setNewName(event.target.value)
-  //     }
-  //     const handleLabelChange = (event) => {
-  //         setNewLabel(event.target.value)
-  //     }
-  //     const handleInputTypeChange = (event) => {
-  //         setNewInputType(event.target.value)
-  //     }
-  //     const handleFormNameChange = (event) => {
-  //         setNewFormName(event.target.value)
-  //     }
-
-  //     return (
-  //         <div>
-  //             <h1>Add new field</h1>
-  //             <form onSubmit={addField}>
-  //                 <div>
-  //                     field label:<input type="text" value={newLabel} onChange={handleLabelChange}></input>
-  //                     input name:<input type="text" value={newName} onChange={handleNameChange}></input>
-  //                     input type:<select value={newInputType} onChange={handleInputTypeChange}>
-  //                         <option value="text">text</option>
-  //                         <option value="color">color</option>
-  //                         <option value="date">date</option>
-  //                         <option value="email">email</option>
-  //                         <option value="tel">telephone</option>
-  //                         <option value="number">number</option>
-  //                     </select>
-  //                     <br></br>
-  //                     <button type="submit">Add Field</button>
-  //                 </div>
-  //             </form>
-  //             <ul>
-  //                 {fields.map((item, i) => <li key={i}>{item.label} {item.name} {item.inputType}</li>)}
-  //             </ul>
-
-  //             <form onSubmit={addForm}>
-  //                 <div>
-  //                     Form Name:<input value={newFormName} onChange={handleFormNameChange}></input>
-  //                     <br></br>
-  //                     <button type="submit">Save</button>
-  //                 </div>
-  //             </form>            </div>
-  //     )
-  // }
 
   function addFormArr (form) {
     setForms(forms.concat(form))
   }
 
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
   return (
     <div className="container-lg">
       <Router history={history}>
+
         <div className="col">
+        {/* {!isAuthenticated && (
+        <button onClick={() => loginWithRedirect({})}>Log in</button>
+      )} */}
           <Link style={padding} to="/table">Form List</Link>|
           <Link style={padding} to="/wizard">Form Builder</Link>
+
+          {/*The new lib I tried to use, too late, providing redirect to the server*/}
+        
+            <SocialButton
+              provider='github'
+              appId='470b3166c3ce49ee90cd'
+              onLoginSuccess={onSuccess}
+              onLoginFailure={onFailure}
+              redirect='http://localhost:3001'
+            >
+            Login with Github
+            </SocialButton>
           <Route path="/table" render={() => <CreateTable forms={forms}/>}/>
           <Route path="/wizard" render={() => <FormWizard forms={forms} setForms={addFormArr}/>}/>
           <Route path="/submit/:id" render={({ match }) => <SubmitPage fields={forms[match.params.id].fields}
                                               formName={forms[match.params.id].name}  id={forms[match.params.id]._id}/>}/>
+
         </div>
       </Router>
 
@@ -131,7 +93,15 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<Router><App /></Router>, document.getElementById('root'))
+ReactDOM.render(<Router>
+<Auth0Provider
+    domain={config.domain}
+    client_id={config.clientId}
+    redirect_uri={window.location.origin}
+    audience={config.audience}
+    onRedirectCallback={onRedirectCallback}
+  >
+  <App /></Auth0Provider></Router>, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
